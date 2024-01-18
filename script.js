@@ -28,10 +28,14 @@
         // Computer wins if: player didn't win
     // Output the choices as strings, and output the result (win, loss, draw)
 
-// FUNCTION: Output the outcome of the game and the choices to the user, as a string
+// FUNCTION: Output the outcome of the round and the choices to the user, as a string
     // Function will have three parameters: the outcome, player's choice, and computer's choice
     // If the player wins, the output will indicate that, and briefly explain why
     // If the computer wins, the output will indicate that, and briefly explain why
+
+// FUNCTION: Output the outcome of the match and the choices to the user as a string
+    // Function will have two parameters: the player's score, and the computer's score
+    // The output will indicate the winner, and the final score
 
 // FUNCTION: Play a best of 5 match of r-p-s
     // Function will not have any parameters
@@ -168,7 +172,9 @@ function showMatchResults (playerScore, computerScore) {
 
     // Output the match outcome and the scores to the user as a string
     if (playerScore > computerScore) {
-        
+        console.log(`You won the match! Final score is ${playerScore}-${computerScore}`);
+    } else if (computerScore > playerScore) {
+        console.log(`You lost the match! Final score is ${playerScore}-${computerScore}`);
     }
 }
 
@@ -223,14 +229,20 @@ function playMatch (rounds) {
         // Initialize function to output results to console
         showRoundResults (outcome, playerChoice, computerChoice);
 
+        // Condition to add score to respective player's score
         if (outcome === 'Player wins') {
             ++playerScore;
         } else if (outcome === 'Computer wins') {
             ++computerScore;
         }
 
+        // Condition to check if a player has reached the match win goal
         if ( playerScore === winGoal || computerScore === winGoal ) {
+        
+            // Update the end condition; the match has reached its end
             endCondition = true;
+
+            // Output the results to show the user the round score, and the winner
 
         }
         
