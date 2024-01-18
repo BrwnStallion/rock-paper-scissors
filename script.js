@@ -152,7 +152,7 @@ function playRound (playerChoice, computerChoice) {
 }
 
 
-// Function to output results of the game to the user
+// Function to output results of the round to the user
 function showRoundResults (outcome, playerChoice, computerChoice) {
     
     // Output the outcome and choices of the game to the user as a string
@@ -163,14 +163,24 @@ function showRoundResults (outcome, playerChoice, computerChoice) {
     }
 }
 
+// Function to output results of the match to the user
+function showMatchResults (playerScore, computerScore) {
 
-// Function to play a best of 5 match
-function playMatch () {
+    // Output the match outcome and the scores to the user as a string
+    if (playerScore > computerScore) {
+        
+    }
+}
+
+// Function to play a best of X match
+function playMatch (rounds) {
     
-    // Declare variable to store round scores as an array
-    let roundScore = [0, 0];
-    let playerScore; // This will be the taken from roundScore[0]
-    let computerScore; // This will be taken from roundScore[1]
+    let winGoal = Math.ceil(rounds / 2);
+
+    // Declare variable to store player's counting score
+    let playerScore;
+    // Declare variable to store computer's counting score
+    let computerScore;
 
     // Initialization value for the match; the match has not yet reached the end
     let endCondition = false;
@@ -178,7 +188,7 @@ function playMatch () {
     // Continue playing rounds until there is a match winner
     while (!endCondition) {
         
-        // Declare drawstatus; default value is '0' in playRound function
+        // Declare drawstatus; for use in playRound function
         let drawStatus = 0;
 
         // Declare result variables for use in results display
@@ -190,7 +200,7 @@ function playMatch () {
         // Initialization value; game is not over
         let gameOver = false;
 
-        // Initialize rounds until there is a winner
+        // Initialize games until there is a round winner
         while (!gameOver) {
 
             // Play round, and output results in an array
@@ -204,7 +214,6 @@ function playMatch () {
             } else {
                 drawStatus = 1;
             }
-            
         }
 
         // Store choices in variables by copying from results array
@@ -214,6 +223,16 @@ function playMatch () {
         // Initialize function to output results to console
         showRoundResults (outcome, playerChoice, computerChoice);
 
+        if (outcome === 'Player wins') {
+            ++playerScore;
+        } else if (outcome === 'Computer wins') {
+            ++computerScore;
+        }
+
+        if ( playerScore === winGoal || computerScore === winGoal ) {
+            endCondition = true;
+
+        }
         
 
     }
