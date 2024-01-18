@@ -9,7 +9,9 @@
     // output r-p-s choice string
 
 // FUNCTION: Create function to get player's choice for r-p-s
+    // function will have one parameter, which defines if there was previously a draw. default value should be zero
     // ask player for their choice, store the player's choice in a variable as a string
+        // include condition for draw, where the input message declares that there was a draw, try again.
     // convert the player's selection into a standardized format (captialized)
     // add a condition that asks the player again for their option if they don't input a valid selection
     // house all of this computation inside of a while condition where input is initially invalid, and then if valid condiiton is satisfied, the loop exits with valid input
@@ -141,7 +143,7 @@ let computerChoice;
 while (!gameOver) {
 
     // Play round, and output results in an array
-    results = playRound( getPlayerChoice(), getComputerChoice(), drawStatus );
+    results = playRound( getPlayerChoice(drawStatus), getComputerChoice() );
     outcome = results[0];
 
     // Condition to evaluate if the competition has a decision
