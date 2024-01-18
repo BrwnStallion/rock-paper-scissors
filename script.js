@@ -123,3 +123,34 @@ function playRound (playerChoice, computerChoice) {
     // output the outcome of the competition, and the choices as array object
     return [ outcome, playerChoice, computerChoice ];
 }
+
+
+// Initialization value; game is not over
+let gameOver = false;
+
+// declare drawstatus; default value is '0' in playRound function
+let drawStatus = 0;
+
+// Declare result variables for use in results display
+let results;
+let outcome;
+let playerChoice;
+let computerChoice;
+
+// Initialize rounds until there is a winner
+while (!gameOver) {
+
+    // Play round, and output results in an array
+    results = playRound( getPlayerChoice(), getComputerChoice(), drawStatus );
+    outcome = results[0];
+
+    // Condition to evaluate if the competition has a decision
+    if (outcome !== 'Draw') {
+        gameOver = true;
+    } else {
+        drawStatus = 1;
+    }
+}
+
+playerChoice = results[1];
+computerChoice = results[2];
