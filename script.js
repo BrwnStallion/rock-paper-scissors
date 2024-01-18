@@ -37,7 +37,9 @@
     // Function will not have any parameters
     // Play rounds of r-p-s (repeating if there is a draw)
     // Play until one player has won 3 games
+        // Track the round score for each decision
     // Output the results of each round
+    // Use a condition to check if a player has reached 3 wins (endCondition)
     // Output the round score with each decision
     // Output a final message declaring a winner, and state the round score
 
@@ -162,36 +164,58 @@ function showRoundResults (outcome, playerChoice, computerChoice) {
 }
 
 
-// Declare drawstatus; default value is '0' in playRound function
-let drawStatus = 0;
+// Function to play a best of 5 match
+function playMatch () {
+    
+    // Declare variable to store round scores as an array
+    let roundScore = [0, 0];
+    let playerScore; // This will be the taken from roundScore[0]
+    let computerScore; // This will be taken from roundScore[1]
 
-// Declare result variables for use in results display
-let results;
-let outcome;
-let playerChoice;
-let computerChoice;
+    // Initialization value for the match; the match has not yet reached the end
+    let endCondition = false;
+    
+    // Continue playing rounds until there is a match winner
+    while (!endCondition) {
+        
+        // Declare drawstatus; default value is '0' in playRound function
+        let drawStatus = 0;
 
-// Initialization value; game is not over
-let gameOver = false;
+        // Declare result variables for use in results display
+        let results;
+        let outcome;
+        let playerChoice;
+        let computerChoice;
+        
+        // Initialization value; game is not over
+        let gameOver = false;
 
-// Initialize rounds until there is a winner
-while (!gameOver) {
+        // Initialize rounds until there is a winner
+        while (!gameOver) {
 
-    // Play round, and output results in an array
-    results = playRound( getPlayerChoice(drawStatus), getComputerChoice() );
-    outcome = results[0];
+            // Play round, and output results in an array
+            results = playRound( getPlayerChoice(drawStatus), getComputerChoice() );
+            outcome = results[0];
 
-    // Condition to evaluate if the competition has a decision
-    if (outcome !== 'Draw') {
-        gameOver = true;
-    } else {
-        drawStatus = 1;
+            
+            // Condition to evaluate if the competition has a decision
+            if (outcome !== 'Draw') {
+                gameOver = true;
+            } else {
+                drawStatus = 1;
+            }
+            
+        }
+
+        // Store choices in variables by copying from results array
+        playerChoice = results[1];
+        computerChoice = results[2];
+
+        // Initialize function to output results to console
+        showRoundResults (outcome, playerChoice, computerChoice);
+
+        
+
     }
 }
 
-// Store choices in variables by copying from results array
-playerChoice = results[1];
-computerChoice = results[2];
-
-// Initialize function to output results to console
-showRoundResults (outcome, playerChoice, computerChoice);
