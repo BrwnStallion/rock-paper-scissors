@@ -33,6 +33,14 @@
     // If the player wins, the output will indicate that, and briefly explain why
     // If the computer wins, the output will indicate that, and briefly explain why
 
+// FUNCTION: Play a best of 5 match of r-p-s
+    // Function will not have any parameters
+    // Play rounds of r-p-s (repeating if there is a draw)
+    // Play until one player has won 3 games
+    // Output the results of each round
+    // Output the round score with each decision
+    // Output a final message declaring a winner, and state the round score
+
 // GLOBAL SCOPE: Initialize function to play a best of five match
 
 
