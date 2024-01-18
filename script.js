@@ -184,9 +184,9 @@ function playMatch (rounds) {
     let winGoal = Math.ceil(rounds / 2);
 
     // Declare variable to store player's counting score, starting at zero
-    let playerScore;
+    let playerScore = 0;
     // Declare variable to store computer's counting score, starting at zero
-    let computerScore;
+    let computerScore = 0;
 
     // Initialization value for the match; the match has not yet reached the end
     let endCondition = false;
