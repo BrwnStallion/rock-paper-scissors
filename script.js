@@ -55,7 +55,7 @@
     // While there is a draw, display that there was a draw, and initialize comparison function (playRound) again
     // If there is not a draw, display the results
 
-// --------------------------- END PSEUDOCODE ---------------------------------
+// ---------------------------- END PSEUDOCODE ---------------------------------
 
 
 // Initialize function to return computer's choice for rock paper scissors
@@ -113,7 +113,9 @@ function getPlayerChoice (drawStatus = 0) {
         }
 
         // condition to check if the player inputted a valid option
-        if ( (playerChoice === 'Rock') || (playerChoice === 'Paper') || (playerChoice === 'Scissors') ) {
+        if (
+            (playerChoice === 'Rock') || (playerChoice === 'Paper') ||
+            (playerChoice === 'Scissors') ) {
             invalidInput = false;   // input is valid
         } else {
             alert('Please input a valid option.');  // if input is invalid
@@ -177,9 +179,11 @@ function showMatchResults (playerScore, computerScore) {
 
     // Output the match outcome and the scores to the user as a string
     if (playerScore > computerScore) {
-        console.log(`You won the match! Final score is ${playerScore}-${computerScore}`);
+        console.log(`You won the match! Final score is ` +
+        `${playerScore}-${computerScore}`);
     } else if (computerScore > playerScore) {
-        console.log(`You lost the match! Final score is ${playerScore}-${computerScore}`);
+        console.log(`You lost the match! Final score is ` +
+        `${playerScore}-${computerScore}`);
     }
 }
 
@@ -215,7 +219,8 @@ function playMatch (rounds) {
         while (!gameOver) {
 
             // Play round, and output results in an array
-            results = playRound( getPlayerChoice(drawStatus), getComputerChoice() );
+            results = playRound( getPlayerChoice(drawStatus),
+            getComputerChoice() );
             outcome = results[0];
 
             
