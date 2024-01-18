@@ -11,6 +11,8 @@
 // FUNCTION: Create function to get player's choice for r-p-s
     // ask player for their choice, store the player's choice in a variable as a string
     // convert the player's selection into a standardized format (captialized)
+    // add a condition that asks the player again for their option if they don't input a valid selection
+    // house all of this computation inside of a while condition where input is initially invalid, and then if valid condiiton is satisfied, the loop exits with valid input
     // return the variable containing the player's selection
 
 // FUNCTION: Compare player's choice to computer's choice. Determine winner based off pre-defined relationships
@@ -29,6 +31,7 @@
     // If there is not a draw, display the results 
 
 // --------------------------- END PSEUDOCODE ---------------------------------
+
 
 // Initialize function to return computer's choice for rock paper scissors
 function getComputerChoice () {
@@ -57,18 +60,34 @@ function getComputerChoice () {
     return computerChoice;
 }
 
+
 // Initialize function to get player's choice for r-p-s
 function getPlayerChoice () {
     
-    // ask player for their choice, store it in a variable as a string
-    let playerChoice = prompt( 'Choose from \'Rock\', \'Paper\', or \'Scissors\'.');
-    
-    // convert the player's selection into a standardized format (capitalized)
-    playerChoice = makeCapitalized(playerChoice);
-    
+    // initialize value for while loop
+    let invalidInput = true;
+    // declare variable outside of while scope
+    let playerChoice;
+
+    while (invalidInput) {
+        // ask player for their choice, store it in a variable as a string
+        playerChoice = prompt( 'Choose from \'Rock\', \'Paper\', or \'Scissors\'.');
+        
+        // convert the player's selection into a standardized format (capitalized)
+        playerChoice = makeCapitalized(playerChoice);
+        
+        // condition to check if the player inputted a valid option
+        if ( (playerChoice === 'Rock') || (playerChoice === 'Paper') || (playerChoice === 'Scissors') ) {
+            invalidInput = false;   // input is valid
+        } else {
+            alert('Please input a valid option.');  // if input is invalid
+        }
+    }
+
     // return the variable containing the player's selection
     return playerChoice;
 }
+
 
 // Function to captialize strings
 function makeCapitalized(string) {
@@ -77,6 +96,8 @@ function makeCapitalized(string) {
     return (firstLetter + stringBody); // concatenates the two
 }
 
-function playRound (playerChoice, computerChoice) {
 
+// Function to compare choices
+function playRound (playerChoice, computerChoice) {
+    
 }
