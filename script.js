@@ -15,6 +15,7 @@
     // convert the player's selection into a standardized format (captialized)
     // add a condition that asks the player again for their option if they don't input a valid selection
     // house all of this computation inside of a while condition where input is initially invalid, and then if valid condiiton is satisfied, the loop exits with valid input
+    // include a condition for what to do if the player declines to play
     // return the variable containing the player's selection
 
 // FUNCTION: Compare player's choice to computer's choice. Determine winner based off pre-defined relationships
@@ -104,9 +105,13 @@ function getPlayerChoice (drawStatus = 0) {
             playerChoice = prompt( 'There was a draw. Choose again from \'Rock\', \'Paper\', or \'Scissors\'.');
         }
         
-        // convert the player's selection into a standardized format (capitalized)
-        playerChoice = makeCapitalized(playerChoice);
-        
+        if (playerChoice !== null) {
+            // convert the player's selection into a standardized format (capitalized)
+            playerChoice = makeCapitalized(playerChoice)
+        } else {
+            throw new Error('I guess you didn\'t want to play...'); // If the player cancels
+        }
+
         // condition to check if the player inputted a valid option
         if ( (playerChoice === 'Rock') || (playerChoice === 'Paper') || (playerChoice === 'Scissors') ) {
             invalidInput = false;   // input is valid
