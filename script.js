@@ -33,9 +33,12 @@
     // If the player wins, the output will indicate that, and briefly explain why
     // If the computer wins, the output will indicate that, and briefly explain why
 
+// GLOBAL SCOPE: Initialize function to play a best of five match
+
+
 // GLOBAL SCOPE: initialize rounds until there is a winner
     // While there is a draw, display that there was a draw, and initialize comparison function (playRound) again
-    // If there is not a draw, display the results 
+    // If there is not a draw, display the results
 
 // --------------------------- END PSEUDOCODE ---------------------------------
 
@@ -138,8 +141,9 @@ function playRound (playerChoice, computerChoice) {
     return [ outcome, playerChoice, computerChoice ];
 }
 
+
 // Function to output results of the game to the user
-function showResults (outcome, playerChoice, computerChoice) {
+function showRoundResults (outcome, playerChoice, computerChoice) {
     
     // Output the outcome and choices of the game to the user as a string
     if (outcome === 'Player wins') {
@@ -182,4 +186,4 @@ playerChoice = results[1];
 computerChoice = results[2];
 
 // Initialize function to output results to console
-showResults (outcome, playerChoice, computerChoice);
+showRoundResults (outcome, playerChoice, computerChoice);
