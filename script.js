@@ -27,7 +27,12 @@
         // Player wins if: (Rock and Scissors) OR (Scissors and Paper) OR (Paper and Rock)
         // Computer wins if: player didn't win
     // Output the choices as strings, and output the result (win, loss, draw)
-    
+
+// FUNCTION: Output the outcome of the game and the choices to the user, as a string
+    // Function will have three parameters: the outcome, player's choice, and computer's choice
+    // If the player wins, the output will indicate that, and briefly explain why
+    // If the computer wins, the output will indicate that, and briefly explain why
+
 // GLOBAL SCOPE: initialize rounds until there is a winner
     // While there is a draw, display that there was a draw, and initialize comparison function (playRound) again
     // If there is not a draw, display the results 
@@ -64,7 +69,7 @@ function getComputerChoice () {
 
 
 // Initialize function to get player's choice for r-p-s
-function getPlayerChoice () {
+function getPlayerChoice (drawStatus) {
     
     // initialize value for while loop
     let invalidInput = true;
@@ -72,8 +77,15 @@ function getPlayerChoice () {
     let playerChoice;
 
     while (invalidInput) {
-        // ask player for their choice, store it in a variable as a string
-        playerChoice = prompt( 'Choose from \'Rock\', \'Paper\', or \'Scissors\'.');
+        
+        // Condition to adjust prompt if there was a draw in the previous game
+        if (drawStatus === 0) {
+            // ask player for their choice, store it in a variable as a string
+            playerChoice = prompt( 'Choose from \'Rock\', \'Paper\', or \'Scissors\'.');
+        } else {
+            // Inform player there was a draw; ask for choice and store in variable
+            playerChoice = prompt( 'There was a draw. Choose again from \'Rock\', \'Paper\', or \'Scissors\'.');
+        }
         
         // convert the player's selection into a standardized format (capitalized)
         playerChoice = makeCapitalized(playerChoice);
@@ -126,11 +138,19 @@ function playRound (playerChoice, computerChoice) {
     return [ outcome, playerChoice, computerChoice ];
 }
 
+// Function to output results of the game to the user
+function showResults (outcome, playerChoice, computerChoice) {
+    
+    // Output the outcome and choices of the game to the user as a string
+    if (outcome === 'Player wins') {
+        console.log(`You win! ${playerChoice} beats ${computerChoice}`);
+    } else if (outcome === 'Computer wins') {
+        console.log(`You lose! ${computerChoice} beats ${playerChoice}`);
+    }
+}
 
-// Initialization value; game is not over
-let gameOver = false;
 
-// declare drawstatus; default value is '0' in playRound function
+// Declare drawstatus; default value is '0' in playRound function
 let drawStatus = 0;
 
 // Declare result variables for use in results display
@@ -138,6 +158,9 @@ let results;
 let outcome;
 let playerChoice;
 let computerChoice;
+
+// Initialization value; game is not over
+let gameOver = false;
 
 // Initialize rounds until there is a winner
 while (!gameOver) {
@@ -154,5 +177,7 @@ while (!gameOver) {
     }
 }
 
+// Store choices in variables by copying from results array
 playerChoice = results[1];
 computerChoice = results[2];
+
