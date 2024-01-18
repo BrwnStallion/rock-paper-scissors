@@ -181,3 +181,5 @@ while (!gameOver) {
 playerChoice = results[1];
 computerChoice = results[2];
 
+// Initialize function to output results to console
+showResults (outcome, playerChoice, computerChoice);
