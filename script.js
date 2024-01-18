@@ -59,7 +59,22 @@ function getComputerChoice () {
 
 // Initialize function to get player's choice for r-p-s
 function getPlayerChoice () {
+    
+    // ask player for their choice, store it in a variable as a string
+    let playerChoice = prompt( 'Choose from \'Rock\', \'Paper\', or \'Scissors\'.');
+    
+    // convert the player's selection into a standardized format (capitalized)
+    playerChoice = makeCapitalized(playerChoice);
+    
+    // return the variable containing the player's selection
+    return playerChoice;
+}
 
+// Function to captialize strings
+function makeCapitalized(string) {
+    let firstLetter = string.charAt(0).toUpperCase();   // takes the first letter and capitalizes
+    let stringBody = string.slice(1).toLowerCase(); // takes the body and makes it lower case
+    return (firstLetter + stringBody); // concatenates the two
 }
 
 function playRound (playerChoice, computerChoice) {
