@@ -102,7 +102,24 @@ function makeCapitalized(string) {
 }
 
 
-// Function to compare choices
+// Function to compare player's choice to computer's
 function playRound (playerChoice, computerChoice) {
     
+    // Declare outcome variable to store result as string
+    let outcome;
+
+    // Choices comparison. Draw, player wins, or computer wins
+    if (playerChoice === computerChoice) {
+        outcome = 'Draw';
+    } else if ( 
+    (playerChoice === 'Rock' && computerChoice === 'Scissors') || 
+    (playerChoice === 'Scissors' && computerChoice === 'Paper') || 
+    (playerChoice === 'Paper' && computerChoice === 'Rock') ) {
+        outcome = 'Player wins';
+    } else {
+        outcome = 'Computer wins';
+    }
+
+    // output the outcome of the competition, and the choices as array object
+    return [ outcome, playerChoice, computerChoice ];
 }
