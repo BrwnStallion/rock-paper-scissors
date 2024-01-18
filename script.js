@@ -86,7 +86,7 @@ function getComputerChoice () {
 
 
 // Initialize function to get player's choice for r-p-s
-function getPlayerChoice (drawStatus) {
+function getPlayerChoice (drawStatus = 0) {
     
     // initialize value for while loop
     let invalidInput = true;
@@ -183,9 +183,9 @@ function playMatch (rounds) {
     
     let winGoal = Math.ceil(rounds / 2);
 
-    // Declare variable to store player's counting score
+    // Declare variable to store player's counting score, starting at zero
     let playerScore;
-    // Declare variable to store computer's counting score
+    // Declare variable to store computer's counting score, starting at zero
     let computerScore;
 
     // Initialization value for the match; the match has not yet reached the end
@@ -243,10 +243,14 @@ function playMatch (rounds) {
             endCondition = true;
 
             // Output the results to show the user the round score, and the winner
-
+            showMatchResults(playerScore, computerScore);
         }
-        
-
     }
 }
 
+
+// Initialize playMatch function to play a match of r-p-s to a certain amount of rounds
+
+let rounds = 5;
+alert(`Let's play a best of ${rounds} match of Rock, Paper, Scissors.`);
+playMatch(rounds);
