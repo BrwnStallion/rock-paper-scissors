@@ -91,9 +91,14 @@ function getPlayerChoice () {
 
 // Function to captialize strings
 function makeCapitalized(string) {
-    let firstLetter = string.charAt(0).toUpperCase();   // takes the first letter and capitalizes
-    let stringBody = string.slice(1).toLowerCase(); // takes the body and makes it lower case
-    return (firstLetter + stringBody); // concatenates the two
+    // takes the first letter and capitalizes
+    let firstLetter = string.charAt(0).toUpperCase();
+     
+    // takes the body and makes it lower case
+    let stringBody = string.slice(1).toLowerCase();
+    
+    // concatenates the two and returns it
+    return (firstLetter + stringBody);
 }
 
 
