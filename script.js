@@ -91,18 +91,34 @@ function getPlayerChoice (drawStatus = 0) {
     
     // initialize value for while loop
     let invalidInput = true;
-    // declare variable outside of while scope
+
+    const optionBtns = document.querySelectorAll('#player-choice button');
     let playerChoice;
+    // declare variable outside of while scope
+    const playerButton = document.querySelector('#player-choice');
+    
+    playerButton.addEventListener('click', (e) => {
+        playerChoice = e.target.id;
+        // console.log(playerChoice);
+        optionBtns.forEach( (button) => {
+            button.disabled = true;
+        });
+    }, {
+        once: true
+    });
 
     while (invalidInput) {
         
         // Condition to adjust prompt if there was a draw in the previous game
         if (drawStatus === 0) {
             // ask player for their choice, store it in a variable as a string
+            
             playerChoice = prompt( 'Choose from \'Rock\', \'Paper\', or \'Scissors\'.');
         } else {
             // Inform player there was a draw; ask for choice and store in variable
-            playerChoice = prompt( 'There was a draw. Choose again from \'Rock\', \'Paper\', or \'Scissors\'.');
+            const statusPara = document.querySelector('#results #status');
+            statusPara.textContent = 'There was a draw. Choose again.';
+            playerChoice = target.id
         }
         
         if (playerChoice !== null) {
@@ -261,6 +277,23 @@ function playMatch (rounds) {
 
 // Initialize playMatch function to play a match of r-p-s to a certain amount of rounds
 
+    const optionBtns = document.querySelectorAll('#player-choice button');
+
+    let playerChoice;
+    // declare variable outside of while scope
+    const playerButton = document.querySelector('#player-choice');
+    playerButton.addEventListener('click', (e) => {
+        playerChoice = e.target.id;
+        console.log(playerChoice);
+        optionBtns.forEach( (button) => {
+            button.disabled = true;
+        });
+    }, {
+        once: true
+    });
+    
+    
+
 let rounds = 5;
-alert(`Let's play a best of ${rounds} match of Rock, Paper, Scissors.`);
-playMatch(rounds);
+// alert(`Let's play a best of ${rounds} match of Rock, Paper, Scissors.`);
+// playMatch(rounds);
