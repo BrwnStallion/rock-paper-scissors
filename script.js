@@ -89,54 +89,38 @@ function getComputerChoice () {
 // Initialize function to get player's choice for r-p-s
 function getPlayerChoice (drawStatus = 0) {
     
-    // initialize value for while loop
-    let invalidInput = true;
-
-    const optionBtns = document.querySelectorAll('#player-choice button');
     let playerChoice;
-    // declare variable outside of while scope
-    const playerButton = document.querySelector('#player-choice');
-    
-    playerButton.addEventListener('click', (e) => {
-        playerChoice = e.target.id;
-        // console.log(playerChoice);
-        optionBtns.forEach( (button) => {
-            button.disabled = true;
-        });
-    }, {
-        once: true
-    });
 
-    while (invalidInput) {
+    function buttonListener() {
+        const optionBtns = document.querySelectorAll('#player-choice button');
+        let playerChoice;
+        const playerButton = document.querySelector('#player-choice');
+        
+        playerChoice = playerButton.addEventListener('click', (e) => {
+            playerChoice = e.target.id;
+            // console.log(playerChoice);
+            optionBtns.forEach( (button) => {
+                button.disabled = true;
+            });
+        }, {
+            once: true
+        });
+        return playerChoice;
+    }
         
         // Condition to adjust prompt if there was a draw in the previous game
-        if (drawStatus === 0) {
-            // ask player for their choice, store it in a variable as a string
-            
-            playerChoice = prompt( 'Choose from \'Rock\', \'Paper\', or \'Scissors\'.');
-        } else {
-            // Inform player there was a draw; ask for choice and store in variable
-            const statusPara = document.querySelector('#results #status');
-            statusPara.textContent = 'There was a draw. Choose again.';
-            playerChoice = target.id
-        }
-        
-        if (playerChoice !== null) {
-            // convert the player's selection into a standardized format (capitalized)
-            playerChoice = makeCapitalized(playerChoice)
-        } else {
-            throw new Error('I guess you didn\'t want to play...'); // If the player cancels
-        }
+    if (drawStatus !== 0) {
+        // Inform player there was a draw; ask for choice and store in variable
+        const statusPara = document.querySelector('#results #status');
+        statusPara.textContent = 'There was a draw. Choose again.';
+    };
 
-        // condition to check if the player inputted a valid option
-        if (
-            (playerChoice === 'Rock') || (playerChoice === 'Paper') ||
-            (playerChoice === 'Scissors') ) {
-            invalidInput = false;   // input is valid
-        } else {
-            alert('Please input a valid option.');  // if input is invalid
-        }
-    }
+    // ask player for their choice, store it in a variable as a string
+    playerChoice = buttonListener();
+
+    if (playerChoice === null) {
+        throw new Error('I guess you didn\'t want to play...'); // If the player cancels
+    };
 
     // return the variable containing the player's selection
     return playerChoice;
@@ -274,26 +258,31 @@ function playMatch (rounds) {
     }
 }
 
+// Initialize playMatch function to play a match of r-p-s to a certain amount of
+    // rounds  
+let rounds = 5;
+// alert(`Let's play a best of ${rounds} match of Rock, Paper, Scissors.`);
+// playMatch(rounds);
 
-// Initialize playMatch function to play a match of r-p-s to a certain amount of rounds
 
+// ---------------------------- TESTING ----------------------------------------
+
+let playerChoice = getPlayerChoice(0);
+// console.log(playerChoice);
+
+function buttonListener() {
     const optionBtns = document.querySelectorAll('#player-choice button');
-
     let playerChoice;
-    // declare variable outside of while scope
     const playerButton = document.querySelector('#player-choice');
-    playerButton.addEventListener('click', (e) => {
+    
+    playerChoice = playerButton.addEventListener('click', (e) => {
         playerChoice = e.target.id;
-        console.log(playerChoice);
+        // console.log(playerChoice);
         optionBtns.forEach( (button) => {
             button.disabled = true;
         });
     }, {
         once: true
     });
-    
-    
-
-let rounds = 5;
-// alert(`Let's play a best of ${rounds} match of Rock, Paper, Scissors.`);
-// playMatch(rounds);
+    return playerChoice;
+}
