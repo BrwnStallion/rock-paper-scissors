@@ -319,7 +319,8 @@ function playMatch (rounds) {
 const optionBtns = document.querySelectorAll('#player-choice button'); // choices
 const playerButton = document.querySelector('#player-choice'); // parentNode
 let playerChoice;
-const statusPara = document.querySelector('#results #status');
+const scorePara = document.querySelector('#results #running-score'); // match score
+const statusPara = document.querySelector('#results #status'); // round outcome
 
 // Match information
 let rounds = 5;
