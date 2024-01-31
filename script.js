@@ -328,9 +328,11 @@ const playerButton = document.querySelector('#player-choice'); // parentNode
 let playerChoice;
 const scorePara = document.querySelector('#results #running-score'); // match score
 const statusPara = document.querySelector('#results #status'); // round outcome
+const roundInput = document.querySelector('#rounds input');
+const roundConfirm = document.querySelector('#rounds #round-confirm');
 
 // Match information
-let rounds = 5;
+let rounds = roundInput.value;
 let winGoal = Math.ceil(rounds / 2);
 
 // Declare variable to store player's counting score, starting at zero
@@ -341,6 +343,7 @@ let computerScore = 0;
 // Initialization value for the match; the match has not yet reached the end
 let endCondition = false;
 let gameOver = 0;
+
 
 
 playerButton.addEventListener('click', (e) => {
@@ -359,7 +362,7 @@ playerButton.addEventListener('click', (e) => {
         outcome, playerChoice, computerChoice
     );
     
-    // This can be put into a function
+    // This can be put into a function?
     // Match score incrementation
     if (outcome === 'Player wins') {
         ++playerScore;
