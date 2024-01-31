@@ -346,6 +346,10 @@ let endCondition = false;
 let gameOver = 0;
 
 
+// Event listener to put focus on input field by default
+document.addEventListener('DOMContentLoaded', () => {
+    roundInput.focus();
+});
 
 // Event listener on input confirm button for round input
 roundConfirm.addEventListener('click', () => {
