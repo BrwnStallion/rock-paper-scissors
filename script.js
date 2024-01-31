@@ -319,7 +319,7 @@ function playMatch (rounds) {
 const optionBtns = document.querySelectorAll('#player-choice button'); // choices
 const playerButton = document.querySelector('#player-choice'); // parentNode
 let playerChoice;
-
+const statusPara = document.querySelector('#results #status');
 
 // Match information
 let rounds = 5;
@@ -345,7 +345,7 @@ playerButton.addEventListener('click', (e) => {
     let outcome = results[0];
     let computerChoice = results[2];
     
-    const statusPara = document.querySelector('#results #status');
+    
     statusPara.textContent = showRoundResults(
         outcome, playerChoice, computerChoice
     );
