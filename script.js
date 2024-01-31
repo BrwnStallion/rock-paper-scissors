@@ -346,7 +346,7 @@ let gameOver = 0;
 
 
 
-// Event listener for round input
+// Event listener on input confirm button for round input
 roundConfirm.addEventListener('click', () => {
     rounds = roundConfirm.value;
     winGoal = Math.ceil(rounds / 2);
@@ -360,7 +360,7 @@ roundConfirm.addEventListener('click', () => {
     statusPara.textContent = '';
 });
 
-// Event listener for enter to create confirm click event
+// Event listener for input 'enter' key to create confirm button click event
 roundInput.addEventListener('keydown', (e) => {
     let keyPress = e.key;
     if (keyPress === 'Enter') {
