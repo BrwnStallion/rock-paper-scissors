@@ -354,18 +354,20 @@ playerButton.addEventListener('click', (e) => {
     let outcome = results[0];
     let computerChoice = results[2];
     
-    
+    // Round results
     statusPara.textContent = showRoundResults(
         outcome, playerChoice, computerChoice
     );
     
     // This can be put into a function
+    // Match score incrementation
     if (outcome === 'Player wins') {
         ++playerScore;
     } else if (outcome === 'Computer wins') {
         ++computerScore;
     };
     
+    // Match results
     scorePara.textContent = showMatchResults(playerScore,
         computerScore, gameOver
     );
