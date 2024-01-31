@@ -185,7 +185,7 @@ function showRoundResults (outcome, playerChoice, computerChoice) {
     
     // Declare outcome variable to store result as string
     let output;
-    
+
     // Output the outcome and choices of the game to the user as a string
     switch (outcome) {
         case 'Draw':
@@ -337,13 +337,6 @@ let endCondition = false;
 playerButton.addEventListener('click', (e) => {
     playerChoice = e.target.id;
     playerChoice = makeCapitalized(playerChoice);
-
-    let iWantThisInactive = true;
-    if (!iWantThisInactive) {
-        optionBtns.forEach( (button) => {
-            button.disabled = true;
-        });
-    };
     
     makeBtnDisabled(optionBtns);
 
