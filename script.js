@@ -351,6 +351,15 @@ document.addEventListener('DOMContentLoaded', () => {
     roundInput.focus();
 });
 
+// Event listener for input 'enter' key to create confirm button click event
+roundInput.addEventListener('keydown', (e) => {
+    let keyPress = e.key;
+    if (keyPress === 'Enter') {
+        let confirmClick = new Event('click');
+        roundConfirm.dispatchEvent(confirmClick);
+    };
+});
+
 // Event listener on input confirm button for round input
 roundConfirm.addEventListener('click', () => {
 
@@ -396,15 +405,6 @@ roundConfirm.addEventListener('click', () => {
     
     // add 'best of' paragraph to top of of results div
     resultsDiv.prepend(bestOfPara);
-});
-
-// Event listener for input 'enter' key to create confirm button click event
-roundInput.addEventListener('keydown', (e) => {
-    let keyPress = e.key;
-    if (keyPress === 'Enter') {
-        let confirmClick = new Event('click');
-        roundConfirm.dispatchEvent(confirmClick);
-    };
 });
 
 // Event listener for gameplay
