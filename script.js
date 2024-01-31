@@ -189,7 +189,7 @@ function showRoundResults (outcome, playerChoice, computerChoice) {
     // Output the outcome and choices of the game to the user as a string
     switch (outcome) {
         case 'Draw':
-            output = `It was a draw, try again.`;
+            output = `It was a draw, try again`;
         break;
         case 'Player wins':
             output = `You win! ${playerChoice} beats ${computerChoice}`;
@@ -339,8 +339,6 @@ playerButton.addEventListener('click', (e) => {
     playerChoice = makeCapitalized(playerChoice);
     
     makeBtnDisabled(optionBtns);
-
-    
     
     // Play a round of rps
     let results = playRound(playerChoice, getComputerChoice());
