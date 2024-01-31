@@ -347,7 +347,16 @@ playerButton.addEventListener('click', (e) => {
     
     const statusPara = document.querySelector('#results #status');
     statusPara.textContent = showRoundResults(
-        outcome, playerChoice, computerChoice);
+        outcome, playerChoice, computerChoice
+    );
+    
+    // This can be put into a function
+    if (outcome === 'Player wins') {
+        ++playerScore;
+    } else if (outcome === 'Computer wins') {
+        ++computerScore;
+    };
+    
     
     makeBtnEnabled(optionBtns);
 
