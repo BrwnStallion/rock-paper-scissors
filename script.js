@@ -203,6 +203,7 @@ function showMatchResults (playerScore, computerScore) {
         output = `You lost the match! Final score is ` +
         `${playerScore}-${computerScore}`;
     }
+    return output;
 }
 
 // Function to play a best of X match
