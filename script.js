@@ -338,6 +338,7 @@ let computerScore = 0;
 
 // Initialization value for the match; the match has not yet reached the end
 let endCondition = false;
+let gameOver = 0;
 
 
 playerButton.addEventListener('click', (e) => {
@@ -363,7 +364,9 @@ playerButton.addEventListener('click', (e) => {
         ++computerScore;
     };
     
-    scorePara.textContent = 
+    scorePara.textContent = showMatchResults(playerScore,
+        computerScore, gameOver
+    );
 
     makeBtnEnabled(optionBtns);
 
@@ -374,7 +377,3 @@ playerButton.addEventListener('click', (e) => {
 }, {
     once: false
 });
-
-function checkDrawStatus (playerChoice, computerChoice) {
-
-}
