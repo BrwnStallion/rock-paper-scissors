@@ -185,10 +185,8 @@ function showRoundResults (outcome, playerChoice, computerChoice) {
     let output;
     // Output the outcome and choices of the game to the user as a string
     if (outcome === 'Player wins') {
-        // console.log(`You win! ${playerChoice} beats ${computerChoice}`);
         output = `You win! ${playerChoice} beats ${computerChoice}`;
     } else if (outcome === 'Computer wins') {
-        // console.log(`You lose! ${computerChoice} beats ${playerChoice}`);
         output = `You lose! ${computerChoice} beats ${playerChoice}`;
     }
     return output;
@@ -196,14 +194,14 @@ function showRoundResults (outcome, playerChoice, computerChoice) {
 
 // Function to output results of the match to the user
 function showMatchResults (playerScore, computerScore) {
-
+    let output;
     // Output the match outcome and the scores to the user as a string
     if (playerScore > computerScore) {
-        console.log(`You won the match! Final score is ` +
-        `${playerScore}-${computerScore}`);
+        output = `You won the match! Final score is ` +
+        `${playerScore}-${computerScore}`;
     } else if (computerScore > playerScore) {
-        console.log(`You lost the match! Final score is ` +
-        `${playerScore}-${computerScore}`);
+        output = `You lost the match! Final score is ` +
+        `${playerScore}-${computerScore}`;
     }
 }
 
