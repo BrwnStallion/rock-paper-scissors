@@ -332,8 +332,8 @@ const roundInput = document.querySelector('#rounds input');
 const roundConfirm = document.querySelector('#rounds #round-confirm');
 
 // Match information
-let rounds = roundInput.value;
-let winGoal = Math.ceil(rounds / 2);
+let rounds;
+let winGoal;
 
 // Declare variable to store player's counting score, starting at zero
 let playerScore = 0;
@@ -344,8 +344,21 @@ let computerScore = 0;
 let endCondition = false;
 let gameOver = 0;
 
+// Event listener for round input
+roundConfirm.addEventListener('click', () => {
+    rounds = roundConfirm.value;
+    winGoal = Math.ceil(rounds / 2);
+    
+    // Reset scores if round goal is entered
+    playerScore = 0;
+    computerScore = 0;
 
+    // Empty output paragraphs
+    scorePara.textContent = '';
+    statusPara.textContent = '';
+});
 
+// Event listener for gameplay
 playerButton.addEventListener('click', (e) => {
     playerChoice = e.target.id;
     playerChoice = makeCapitalized(playerChoice);
