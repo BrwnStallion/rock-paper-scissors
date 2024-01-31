@@ -360,7 +360,14 @@ roundConfirm.addEventListener('click', () => {
     statusPara.textContent = '';
 });
 
-
+// Event listener for enter to create confirm click event
+roundInput.addEventListener('keydown', (e) => {
+    let keyPress = e.key;
+    if (keyPress === 'Enter') {
+        let confirmClick = new Event('click');
+        roundConfirm.dispatchEvent(confirmClick);
+    };
+});
 
 // Event listener for gameplay
 playerButton.addEventListener('click', (e) => {
