@@ -182,7 +182,10 @@ function playRound (playerChoice, computerChoice) {
 
 // Function to output results of the round to the user
 function showRoundResults (outcome, playerChoice, computerChoice) {
+    
+    // Declare outcome variable to store result as string
     let output;
+    
     // Output the outcome and choices of the game to the user as a string
     switch (outcome) {
         case 'Draw':
