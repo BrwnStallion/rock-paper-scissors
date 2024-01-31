@@ -376,7 +376,6 @@ roundConfirm.addEventListener('click', () => {
     // Add 'best of..' paragraph to top of results div
     const bestOfPara = document.createElement('p');
     bestOfPara.setAttribute('class', 'best-of');
-    bestOfPara.textContent = '';
     bestOfPara.textContent = `Playing best of ${rounds}`;
     resultsDiv.prepend(bestOfPara);
 });
