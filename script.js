@@ -351,10 +351,9 @@ let gameOver = 0;
 roundConfirm.addEventListener('click', () => {
 
     // Round information
-    rounds = roundInput.value;
+    rounds = +roundInput.value;
     winGoal = Math.ceil(rounds / 2);
     
-    roundInput.blur();
     roundInput.value = '';
 
     // Reset scores if round goal is entered
@@ -373,10 +372,25 @@ roundConfirm.addEventListener('click', () => {
         });
     };
 
-    // Add 'best of..' paragraph to top of results div
     const bestOfPara = document.createElement('p');
     bestOfPara.setAttribute('class', 'best-of');
-    bestOfPara.textContent = `Playing best of ${rounds}`;
+
+    // Require that player inputs an odd 'best of' value
+    if (typeof rounds !== 'number') {
+        bestOfPara.textContent = `Please enter an odd number`;
+        roundInput.focus();
+    } else if (rounds < 0) {
+        bestOfPara.textContent = `Please enter a *positive* odd number`;
+        roundInput.focus();
+    } else if (rounds % 2 === 0 || Math.floor(rounds) !== rounds) {
+        bestOfPara.textContent = `Please enter an odd number`;
+        roundInput.focus();
+    } else {
+        bestOfPara.textContent = `Playing best of ${rounds}`;
+        roundInput.blur();
+    };
+    
+    // add 'best of' paragraph to top of of results div
     resultsDiv.prepend(bestOfPara);
 });
 
