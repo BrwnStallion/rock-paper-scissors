@@ -344,6 +344,8 @@ let computerScore = 0;
 let endCondition = false;
 let gameOver = 0;
 
+
+
 // Event listener for round input
 roundConfirm.addEventListener('click', () => {
     rounds = roundConfirm.value;
@@ -357,6 +359,8 @@ roundConfirm.addEventListener('click', () => {
     scorePara.textContent = '';
     statusPara.textContent = '';
 });
+
+
 
 // Event listener for gameplay
 playerButton.addEventListener('click', (e) => {
