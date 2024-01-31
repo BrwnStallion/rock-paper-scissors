@@ -55,6 +55,21 @@
     // While there is a draw, display that there was a draw, and initialize comparison function (playRound) again
     // If there is not a draw, display the results
 
+
+
+// Everything is triggered on an event listener on the buttons. All activity 
+// waits on the event listener(s) on the buttons.
+// Functions can be called from within the event listener
+
+// Listen for a selection on the buttons
+// FUNCTION: Get the computer's choice
+// FUNCTION: Compare selection to computer's choice
+// If there's a draw, inform the player, and listen again for the player's choice
+// FUNCTION: Declare the winner, and output the round score
+// Listen for player choices until there is a match winner
+// FUNCTION: Declare the winner, and output the final score
+
+
 // ---------------------------- END PSEUDOCODE ---------------------------------
 
 
@@ -105,7 +120,8 @@ function getPlayerChoice (drawStatus = 0) {
         }, {
             once: true
         });
-        return playerChoice;
+        // return playerChoice;
+        return console.log('listener function is over');
     }
         
         // Condition to adjust prompt if there was a draw in the previous game
@@ -123,7 +139,8 @@ function getPlayerChoice (drawStatus = 0) {
     };
 
     // return the variable containing the player's selection
-    return playerChoice;
+    // return playerChoice;
+    return console.log('hello world');
 }
 
 
@@ -165,13 +182,16 @@ function playRound (playerChoice, computerChoice) {
 
 // Function to output results of the round to the user
 function showRoundResults (outcome, playerChoice, computerChoice) {
-    
+    let output;
     // Output the outcome and choices of the game to the user as a string
     if (outcome === 'Player wins') {
-        console.log(`You win! ${playerChoice} beats ${computerChoice}`);
+        // console.log(`You win! ${playerChoice} beats ${computerChoice}`);
+        output = `You win! ${playerChoice} beats ${computerChoice}`;
     } else if (outcome === 'Computer wins') {
-        console.log(`You lose! ${computerChoice} beats ${playerChoice}`);
+        // console.log(`You lose! ${computerChoice} beats ${playerChoice}`);
+        output = `You lose! ${computerChoice} beats ${playerChoice}`;
     }
+    return output;
 }
 
 // Function to output results of the match to the user
@@ -260,29 +280,39 @@ function playMatch (rounds) {
 
 // Initialize playMatch function to play a match of r-p-s to a certain amount of
     // rounds  
-let rounds = 5;
+// let rounds = 5;
 // alert(`Let's play a best of ${rounds} match of Rock, Paper, Scissors.`);
 // playMatch(rounds);
 
 
 // ---------------------------- TESTING ----------------------------------------
 
-let playerChoice = getPlayerChoice(0);
+// let playerChoice = getPlayerChoice(1);
 // console.log(playerChoice);
 
-function buttonListener() {
-    const optionBtns = document.querySelectorAll('#player-choice button');
-    let playerChoice;
-    const playerButton = document.querySelector('#player-choice');
-    
-    playerChoice = playerButton.addEventListener('click', (e) => {
-        playerChoice = e.target.id;
-        // console.log(playerChoice);
-        optionBtns.forEach( (button) => {
-            button.disabled = true;
-        });
-    }, {
-        once: true
+
+const optionBtns = document.querySelectorAll('#player-choice button');
+let playerChoice;
+const playerButton = document.querySelector('#player-choice');
+
+playerButton.addEventListener('click', (e) => {
+    playerChoice = e.target.id;
+    playerChoice = makeCapitalized(playerChoice);
+
+    optionBtns.forEach( (button) => {
+        button.disabled = true;
     });
-    return playerChoice;
-}
+
+    let rounds = 5;
+    
+    // get computer's choice
+    let results = playRound(playerChoice, getComputerChoice());
+    let outcome = results[0];
+    let computerChoice = results[2];
+    
+    const statusPara = document.querySelector('#results #status');
+    statusPara.textContent = showRoundResults(
+        outcome, playerChoice, computerChoice);
+}, {
+    once: false
+});
