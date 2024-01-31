@@ -224,14 +224,14 @@ function showMatchResults (playerScore, computerScore, gameOver = 0) {
     return output;
 }
 
-
+// Function to disable rps buttons during code execution
 function makeBtnDisabled (buttons) {
     buttons.forEach( (button) => {
         button.disabled = true;
     });
 }
 
-
+// Function to enable rps buttons for playerChoice listening
 function makeBtnEnabled (buttons) {
     buttons.forEach( (button) => {
         button.disabled = false;
@@ -317,9 +317,6 @@ function playMatch (rounds) {
 
 
 // ---------------------------- TESTING ----------------------------------------
-
-// let playerChoice = getPlayerChoice(1);
-// console.log(playerChoice);
 
 
 // HTML element information
@@ -432,7 +429,10 @@ playerButton.addEventListener('click', (e) => {
         ++computerScore;
     };
     
-    // Match results
+
+    
+
+    // Output match results
     scorePara.textContent = showMatchResults(playerScore,
         computerScore, gameOver
     );
