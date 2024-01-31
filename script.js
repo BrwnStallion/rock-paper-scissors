@@ -204,16 +204,21 @@ function showRoundResults (outcome, playerChoice, computerChoice) {
 }
 
 // Function to output results of the match to the user
-function showMatchResults (playerScore, computerScore) {
+function showMatchResults (playerScore, computerScore, gameOver = 0) {
     let output;
     // Output the match outcome and the scores to the user as a string
-    if (playerScore > computerScore) {
+    if (gameOver && playerScore > computerScore) {
         output = `You won the match! Final score is ` +
         `${playerScore}-${computerScore}`;
-    } else if (computerScore > playerScore) {
+    } else if (gameOver && computerScore > playerScore) {
         output = `You lost the match! Final score is ` +
-        `${playerScore}-${computerScore}`;
-    }
+        `${computerScore}-${playerScore}`;
+    } else if (!gameOver && playerScore > computerScore) {
+        output = `You're winning: ${playerScore}-${computerScore}`;
+    } else if (!gameOver && computerScore > playerScore) {
+        output = `You're losing: ${playerScore}-${computerScore}`;
+    };
+
     return output;
 }
 
@@ -358,7 +363,8 @@ playerButton.addEventListener('click', (e) => {
         ++computerScore;
     };
     
-    
+    scorePara.textContent = 
+
     makeBtnEnabled(optionBtns);
 
     
