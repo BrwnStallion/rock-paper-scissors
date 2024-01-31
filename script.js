@@ -339,7 +339,6 @@ let playerScore = 0;
 let computerScore = 0;
 
 // Initialization value for the match; the match has not yet reached the end
-let endCondition = false;
 let gameOver = 0;
 
 
@@ -366,9 +365,10 @@ roundConfirm.addEventListener('click', () => {
     
     roundInput.value = '';
 
-    // Reset scores if round goal is entered
+    // Reset scores/status if round goal is entered
     playerScore = 0;
     computerScore = 0;
+    gameOver = 0;
 
     // Empty output paragraphs
     scorePara.textContent = '';
@@ -405,7 +405,8 @@ roundConfirm.addEventListener('click', () => {
 });
 
 // Event listener for gameplay
-playerButton.addEventListener('click', (e) => {
+playerButton.addEventListener('click', (e) => {    
+
     playerChoice = e.target.id;
     playerChoice = makeCapitalized(playerChoice);
     
@@ -429,19 +430,26 @@ playerButton.addEventListener('click', (e) => {
         ++computerScore;
     };
     
-
+    // Check if a player has reached the req'd win amount to win the match
+    if ( playerScore === winGoal || computerScore === winGoal ) {
+        
+        // Update the initialization value; the match has reached its end
+        gameOver = 1;
+    };
     
-
     // Output match results
     scorePara.textContent = showMatchResults(playerScore,
         computerScore, gameOver
     );
 
+    // Reset the game information if player continues
+    if (gameOver === 1) {
+        rounds = undefined;
+        winGoal = undefined;
+        gameOver = 0;
+    };
+
     makeBtnEnabled(optionBtns);
-
-    
-
-
 
 }, {
     once: false
