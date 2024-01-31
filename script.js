@@ -206,6 +206,20 @@ function showMatchResults (playerScore, computerScore) {
     return output;
 }
 
+
+function makeBtnDisabled (buttons) {
+    buttons.forEach( (button) => {
+        button.disabled = true;
+    });
+}
+
+
+function makeBtnEnabled (buttons) {
+    buttons.forEach( (button) => {
+        button.disabled = false;
+    });
+}
+
 // Function to play a best of X match
 function playMatch (rounds) {
     
@@ -298,13 +312,18 @@ playerButton.addEventListener('click', (e) => {
     playerChoice = e.target.id;
     playerChoice = makeCapitalized(playerChoice);
 
-    optionBtns.forEach( (button) => {
-        button.disabled = true;
-    });
+    let iWantThisInactive = true;
+    if (!iWantThisInactive) {
+        optionBtns.forEach( (button) => {
+            button.disabled = true;
+        });
+    };
+    
+    makeBtnDisabled(optionBtns);
 
     let rounds = 5;
     
-    // get computer's choice
+    // Play a round of rps
     let results = playRound(playerChoice, getComputerChoice());
     let outcome = results[0];
     let computerChoice = results[2];
@@ -312,6 +331,9 @@ playerButton.addEventListener('click', (e) => {
     const statusPara = document.querySelector('#results #status');
     statusPara.textContent = showRoundResults(
         outcome, playerChoice, computerChoice);
+    
+    makeBtnEnabled(optionBtns);
+    
 }, {
     once: false
 });
