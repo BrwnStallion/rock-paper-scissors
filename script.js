@@ -350,13 +350,13 @@ let gameOver = 0;
 // Event listener on input confirm button for round input
 roundConfirm.addEventListener('click', () => {
 
+    // Round information
+    rounds = roundInput.value;
+    winGoal = Math.ceil(rounds / 2);
+    
     roundInput.blur();
     roundInput.value = '';
 
-    // Round information
-    rounds = roundConfirm.value;
-    winGoal = Math.ceil(rounds / 2);
-    
     // Reset scores if round goal is entered
     playerScore = 0;
     computerScore = 0;
