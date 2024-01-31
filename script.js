@@ -184,11 +184,19 @@ function playRound (playerChoice, computerChoice) {
 function showRoundResults (outcome, playerChoice, computerChoice) {
     let output;
     // Output the outcome and choices of the game to the user as a string
-    if (outcome === 'Player wins') {
-        output = `You win! ${playerChoice} beats ${computerChoice}`;
-    } else if (outcome === 'Computer wins') {
-        output = `You lose! ${computerChoice} beats ${playerChoice}`;
-    }
+    switch (outcome) {
+        case 'Draw':
+            output = `It was a draw, try again.`;
+        break;
+        case 'Player wins':
+            output = `You win! ${playerChoice} beats ${computerChoice}`;
+        break;
+        case 'Computer wins':
+            output = `You lose! ${computerChoice} beats ${playerChoice}`;
+        break;
+        default:
+            output = '';
+    };
     return output;
 }
 
@@ -304,9 +312,24 @@ function playMatch (rounds) {
 // console.log(playerChoice);
 
 
-const optionBtns = document.querySelectorAll('#player-choice button');
+// HTML element information
+const optionBtns = document.querySelectorAll('#player-choice button'); // choices
+const playerButton = document.querySelector('#player-choice'); // parentNode
 let playerChoice;
-const playerButton = document.querySelector('#player-choice');
+
+
+// Match information
+let rounds = 5;
+let winGoal = Math.ceil(rounds / 2);
+
+// Declare variable to store player's counting score, starting at zero
+let playerScore = 0;
+// Declare variable to store computer's counting score, starting at zero
+let computerScore = 0;
+
+// Initialization value for the match; the match has not yet reached the end
+let endCondition = false;
+
 
 playerButton.addEventListener('click', (e) => {
     playerChoice = e.target.id;
@@ -321,7 +344,7 @@ playerButton.addEventListener('click', (e) => {
     
     makeBtnDisabled(optionBtns);
 
-    let rounds = 5;
+    
     
     // Play a round of rps
     let results = playRound(playerChoice, getComputerChoice());
@@ -333,7 +356,15 @@ playerButton.addEventListener('click', (e) => {
         outcome, playerChoice, computerChoice);
     
     makeBtnEnabled(optionBtns);
+
     
+
+
+
 }, {
     once: false
 });
+
+function checkDrawStatus (playerChoice, computerChoice) {
+
+}
