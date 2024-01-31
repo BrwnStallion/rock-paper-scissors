@@ -217,6 +217,8 @@ function showMatchResults (playerScore, computerScore, gameOver = 0) {
         output = `You're winning: ${playerScore}-${computerScore}`;
     } else if (!gameOver && computerScore > playerScore) {
         output = `You're losing: ${playerScore}-${computerScore}`;
+    } else if (!gameOver && playerScore === computerScore) {
+        output = `It's tied: ${playerScore}-${computerScore}`;
     };
 
     return output;
