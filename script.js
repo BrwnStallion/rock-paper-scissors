@@ -326,6 +326,7 @@ function playMatch (rounds) {
 const optionBtns = document.querySelectorAll('#player-choice button'); // choices
 const playerButton = document.querySelector('#player-choice'); // parentNode
 let playerChoice;
+const resultsDiv = document.querySelector('#results'); // results div
 const scorePara = document.querySelector('#results #running-score'); // match score
 const statusPara = document.querySelector('#results #status'); // round outcome
 const roundInput = document.querySelector('#rounds input');
@@ -348,6 +349,11 @@ let gameOver = 0;
 
 // Event listener on input confirm button for round input
 roundConfirm.addEventListener('click', () => {
+
+    roundInput.blur();
+    roundInput.value = '';
+
+    // Round information
     rounds = roundConfirm.value;
     winGoal = Math.ceil(rounds / 2);
     
@@ -358,6 +364,21 @@ roundConfirm.addEventListener('click', () => {
     // Empty output paragraphs
     scorePara.textContent = '';
     statusPara.textContent = '';
+
+    // Delete any existing 'best of...' paragraphs in results div
+    const bestOfParaOld = document.querySelectorAll('#results .best-of');
+    if (bestOfParaOld.length > 0) {
+            bestOfParaOld.forEach( (oldBestOf) => {
+            resultsDiv.removeChild(oldBestOf);
+        });
+    };
+
+    // Add 'best of..' paragraph to top of results div
+    const bestOfPara = document.createElement('p');
+    bestOfPara.setAttribute('class', 'best-of');
+    bestOfPara.textContent = '';
+    bestOfPara.textContent = `Playing best of ${rounds}`;
+    resultsDiv.prepend(bestOfPara);
 });
 
 // Event listener for input 'enter' key to create confirm button click event
