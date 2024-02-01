@@ -32,7 +32,7 @@ body {
     background-color: black;
     flex-direction: column;
     min-height: 15vh;
-    gap: 15px;
+    gap: 30px;
     padding: 10px;
 }
 
