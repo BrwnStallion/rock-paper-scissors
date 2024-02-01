@@ -6,6 +6,7 @@ body {
 }
 
 #header,
+#play-area,
 #rounds,
 #player-choice,
 #results {
@@ -21,14 +22,24 @@ body {
 }
 
 #header,
+#play-area,
 #rounds,
 #player-choice {
     justify-content: center;
 }
 
+#play-area {
+    background-color: black;
+    flex-direction: column;
+    min-height: 75px;
+    /* align-items: center; */
+    gap: 15px;
+    padding: 10px;
+}
+
 #rounds,
 #player-choice {
-    background-color: black;
+    /* flex-basis: 100px; */
 }
 
 #rounds {
@@ -41,4 +52,14 @@ body {
 
 #results {
     flex-direction: column;
+    background-color: black;
+    flex-grow: 1;
+    color: rgb(21, 253, 0);
+    padding: 20px 20% 20px 20%;
+    font-family: monospace;
+}
+
+#results p {
+    margin: 5px 0px 5px 0px;
+
 }
