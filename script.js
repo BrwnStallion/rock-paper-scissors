@@ -203,6 +203,7 @@ function showRoundResults (outcome, playerChoice, computerChoice) {
     return output;
 }
 
+
 // Function to output results of the match to the user
 function showMatchResults (playerScore, computerScore, gameOver = 0) {
     let output;
@@ -224,6 +225,7 @@ function showMatchResults (playerScore, computerScore, gameOver = 0) {
     return output;
 }
 
+
 // Function to disable rps buttons during code execution
 function makeBtnDisabled (buttons) {
     buttons.forEach( (button) => {
@@ -231,12 +233,14 @@ function makeBtnDisabled (buttons) {
     });
 }
 
+
 // Function to enable rps buttons for playerChoice listening
 function makeBtnEnabled (buttons) {
     buttons.forEach( (button) => {
         button.disabled = false;
     });
 }
+
 
 // Function to remove 'best of' paragraphs
 function removeBestOf () {
@@ -247,6 +251,7 @@ function removeBestOf () {
             });
         };
 }
+
 
 // Function to play a best of X match
 function playMatch (rounds) {
@@ -319,14 +324,7 @@ function playMatch (rounds) {
     }
 }
 
-// Initialize playMatch function to play a match of r-p-s to a certain amount of
-    // rounds  
-// let rounds = 5;
-// alert(`Let's play a best of ${rounds} match of Rock, Paper, Scissors.`);
-// playMatch(rounds);
-
-
-// ---------------------------- TESTING ----------------------------------------
+// ------------------------- Event Listener Execution --------------------------
 
 
 // HTML element information
@@ -455,8 +453,6 @@ playerButton.addEventListener('click', (e) => {
     scorePara.textContent = showMatchResults(playerScore,
         computerScore, gameOver
     );
-
-
 
     makeBtnEnabled(optionBtns);
 
