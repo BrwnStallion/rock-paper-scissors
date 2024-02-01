@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#header,
+#rounds,
+#player-choice,
+#results {
+    display: flex;
+}
+
+#header {
+    min-height: 100px;
+    align-items: center;
+    background-color: rgb(54, 54, 54);
+    font-size: 30px;
+    color: rgb(0, 160, 0);
+}
+
+#header,
+#rounds,
+#player-choice {
+    justify-content: center;
+}
+
+#rounds,
+#player-choice {
+    background-color: black;
+}
+
+#rounds {
+    gap: 10px;
+}
+
+#player-choice {
+    gap: 12px;
+}
+
+#results {
+    flex-direction: column;
+}
