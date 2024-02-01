@@ -212,7 +212,7 @@ function showMatchResults (playerScore, computerScore, gameOver = 0) {
         `${playerScore}-${computerScore}`;
     } else if (gameOver && computerScore > playerScore) {
         output = `You lost the match! Final score is ` +
-        `${computerScore}-${playerScore}`;
+        `${playerScore}-${computerScore}`;
     } else if (!gameOver && playerScore > computerScore) {
         output = `You're winning: ${playerScore}-${computerScore}`;
     } else if (!gameOver && computerScore > playerScore) {
