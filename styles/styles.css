@@ -31,8 +31,7 @@ body {
 #play-area {
     background-color: black;
     flex-direction: column;
-    min-height: 75px;
-    /* align-items: center; */
+    min-height: 15vh;
     gap: 15px;
     padding: 10px;
 }
