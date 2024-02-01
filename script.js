@@ -238,6 +238,16 @@ function makeBtnEnabled (buttons) {
     });
 }
 
+// Function to remove 'best of' paragraphs
+function removeBestOf () {
+    const bestOfParaOld = document.querySelectorAll('#results .best-of');
+        if (bestOfParaOld.length > 0) {
+                bestOfParaOld.forEach( (oldBestOf) => {
+                    resultsDiv.removeChild(oldBestOf);
+            });
+        };
+}
+
 // Function to play a best of X match
 function playMatch (rounds) {
     
@@ -376,12 +386,7 @@ roundConfirm.addEventListener('click', () => {
     statusPara.textContent = '';
 
     // Delete any existing 'best of...' paragraphs in results div
-    const bestOfParaOld = document.querySelectorAll('#results .best-of');
-    if (bestOfParaOld.length > 0) {
-            bestOfParaOld.forEach( (oldBestOf) => {
-            resultsDiv.removeChild(oldBestOf);
-        });
-    };
+    removeBestOf();
 
     const bestOfPara = document.createElement('p');
     bestOfPara.setAttribute('class', 'best-of');
@@ -448,6 +453,7 @@ playerButton.addEventListener('click', (e) => {
         rounds = undefined;
         winGoal = undefined;
         gameOver = 0;
+        removeBestOf();
     };
 
     makeBtnEnabled(optionBtns);
