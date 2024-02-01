@@ -16,9 +16,9 @@ body {
 #header {
     min-height: 100px;
     align-items: center;
-    background-color: rgb(54, 54, 54);
+    background-color: black;
     font-size: 30px;
-    color: rgb(0, 160, 0);
+    color: rgb(15, 179, 0);
 }
 
 #header,
