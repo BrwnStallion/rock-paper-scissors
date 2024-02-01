@@ -322,7 +322,6 @@ function playMatch (rounds) {
 // HTML element information
 const optionBtns = document.querySelectorAll('#player-choice button'); // choices
 const playerButton = document.querySelector('#player-choice'); // parentNode
-let playerChoice;
 const resultsDiv = document.querySelector('#results'); // results div
 const scorePara = document.querySelector('#results #running-score'); // match score
 const statusPara = document.querySelector('#results #status'); // round outcome
@@ -332,6 +331,8 @@ const roundConfirm = document.querySelector('#rounds #round-confirm');
 // Match information
 let rounds;
 let winGoal;
+
+let playerChoice;
 
 // Declare variable to store player's counting score, starting at zero
 let playerScore = 0;
