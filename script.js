@@ -435,6 +435,14 @@ playerButton.addEventListener('click', (e) => {
     } else if (outcome === 'Computer wins') {
         ++computerScore;
     };
+
+    // Reset the game information if player continues
+    if (gameOver === 1) {
+        rounds = undefined;
+        winGoal = undefined;
+        gameOver = 0;
+        removeBestOf();
+    };
     
     // Check if a player has reached the req'd win amount to win the match
     if ( playerScore === winGoal || computerScore === winGoal ) {
@@ -448,13 +456,7 @@ playerButton.addEventListener('click', (e) => {
         computerScore, gameOver
     );
 
-    // Reset the game information if player continues
-    if (gameOver === 1) {
-        rounds = undefined;
-        winGoal = undefined;
-        gameOver = 0;
-        removeBestOf();
-    };
+
 
     makeBtnEnabled(optionBtns);
 
