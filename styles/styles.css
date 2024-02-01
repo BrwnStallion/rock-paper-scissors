@@ -57,11 +57,29 @@ body {
     border-radius: 6px;
 }
 
+button {
+    cursor: pointer;
+    color: white;
+    background-color: black;
+    font-family: monospace;
+    border: 1px solid rgb(18, 212, 0);
+}
+
+button:hover {
+    box-shadow: inset 0px 0px 5px 1px rgb(21, 253, 0);
+}
+
 /* --------- Player Choice ---------- */
 #player-choice {
     gap: 12px;
 }
 
+#player-choice button {
+    font-size: 22px;
+    width: 120px;
+    padding: 4px 0px 4px 0px;
+    border-radius: 6px;
+}
 
 /* ------- Results Paragraph Output ----- */
 #results {
